@@ -11,11 +11,11 @@ development:
           connection: user_seq
       shards:
         - connection: user_shard_1
-          less_than: 100
+          less_than: 10
         - connection: user_shard_2
-          less_than: 200
+          less_than: 20
         - connection: user_shard_3
-          less_than: 300
+          less_than: 30
 
 test:
   clusters:

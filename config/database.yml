@@ -17,9 +17,36 @@ default: &default
   password:
   socket: /tmp/mysql.sock
 
+connection_spec: &spec
+      adapter: mysql2
+      encoding: utf8
+      reconnect: false
+      pool: 5
+      username: root
+      password:
+      socket: /tmp/mysql.sock
+
 development:
-  <<: *default
-  database: activerecord_turntable_sample_development
+      <<: *spec
+      database: ar_turntable_sample_development
+      seq: # <-- sequence database definition
+        user_seq_1:
+          <<: *spec
+          database: ar_turntable_sample_user_seq_development
+      shards: # <-- shards definition
+        user_shard_1:
+          <<: *spec
+          database: ar_turntable_sample_user1_development
+        user_shard_2:
+          <<: *spec
+          database: ar_turntable_sample_user2_development
+        user_shard_3:
+          <<: *spec
+          database: ar_turntable_sample_user3_development
+
+#development:
+#  <<: *default
+#  database: activerecord_turntable_sample_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
