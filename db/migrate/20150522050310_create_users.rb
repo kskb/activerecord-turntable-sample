@@ -5,5 +5,6 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    create_sequence_for(:users)
   end
 end
