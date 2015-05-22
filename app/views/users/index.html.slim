@@ -1,8 +1,9 @@
 h1 Listing users
 
-table.table.tabel-bordered
+table.table.table-bordered
   thead
     tr
+      th Id
       th Name
       th
       th
@@ -11,6 +12,7 @@ table.table.tabel-bordered
   tbody
     - @users.each do |user|
       tr
+        td = user.id
         td = user.name
         td = link_to 'Show', user
         td = link_to 'Edit', edit_user_path(user)
