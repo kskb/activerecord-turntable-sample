@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.sort # 各シャードの結果が単純にマージされるので、ソートが必要（DB側にソートさせる意味が無い）
   end
 
   # GET /users/1
